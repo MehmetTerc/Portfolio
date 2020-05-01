@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Konto {
+    int konto;
+
+    Konto() {
+        konto = 1000;
+    }
+
+    void geldEinzahlen() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Geld einzahlen oder auszahlen ?");
+        String answer = sc.next();
+        if (answer.equals("einzahlen")) {
+            System.out.println("Wieviel?");
+            int tmp = sc.nextInt();
+            konto = tmp + konto;
+            System.out.println("Kontostand: " + this.konto);
+        } else if (answer.equals("auszahlen")) {
+            System.out.println("Wieviel?");
+            int tmp = sc.nextInt();
+            if (tmp > this.konto) {
+                System.out.println("Konto nicht genug gedeckt!");
+            } else {
+                konto -= tmp;
+                System.out.println("Kontostand: " + this.konto);
+            }
+        }
+        sc.close();
+    }
+}
